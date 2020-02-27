@@ -1,0 +1,20 @@
+<h1 class="text-center">All cocktails</h1>
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <div class="col-sm-3 my-3">
+      <div class="card-cocktail">
+        <img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" />
+        <div class="card-cocktail-infos">
+          <div>
+            <h2><%= cocktail.name %></h2>
+            <%= link_to 'See more', cocktail_path(cocktail), class: 'stretched-link' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
