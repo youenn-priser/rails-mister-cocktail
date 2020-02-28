@@ -12,24 +12,23 @@
   </head>
 
   <body>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-      <%= link_to cocktails_path, class: "navbar-brand" do %>
-        <i class="fas fa-cocktail"></i>
-      <% end %>
+    <div class="nav d-flex justify-content-between">
+      <div class="home-link mx-4 my-2">
+        <%= link_to cocktails_path, class: "navbar-brand" do %>
+          <i class="fas fa-cocktail"></i>
+        <% end %>
+      </div>
+      <div class="add-link mx-4 my-2">
+        <%= link_to "Add a Cocktail", new_cocktail_path, class: "add-link btn btn-outline-white" %>
+      </div>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to "Add a Cocktail", new_cocktail_path, class: "nav-link" %>
-          </li>
-        </ul>
+    </div>
+    <div class="banner">
+      <div class="container">
+        <h1 class="text-center">Welcome to My Cocktail Bar!</h1>
       </div>
     </div>
+
 
     <%= yield %>
 

@@ -1,16 +1,17 @@
-<h1 class="text-center"><%= @cocktail.name %></h1>
+<h1 class="text-center mt-4"><%= @cocktail.name %></h1>
 <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <img class="rounded img-fluid w-75" src="https://images.unsplash.com/photo-1546171753-97d7676e4602?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"/>
+        <%= @cocktail.photo.attached? ? (cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill, class: "rounded") : (image_tag 'default-cocktail.png', class: 'rounded img-fluid w-75') %>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 d-flex flex-column justify-content-center">
         <h3 class="text-center">Recipe</h3>
         <ul class="list-group">
           <% @cocktail.doses.each do |dose| %>
             <li class="list-group-item"><%= dose.description %> of <%= dose.ingredient.name %></li>
           <% end %>
         </ul>
+        <%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail), class: 'btn btn-success center mt-2' %>
       </div>
     </div>
   </div>
