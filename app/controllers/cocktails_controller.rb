@@ -1,10 +1,10 @@
 class CocktailsController < ApplicationController
   def index
-    @cocktails = Cocktail.all.order(:name)
-    @search = params['search']
+    @search = params[:query]
     if @search.present?
-      @name = @search['name']
-      @cocktails = Cocktail.where('name ILIKE ?', @name)
+      @cocktails = Cocktail.where('name ILIKE ?', @search)
+    else
+      @cocktails = Cocktail.all.order(:name)
     end
   end
 
@@ -25,12 +25,19 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def edit
+    @cocktail = Cocktail.find(params[:id])
+  end
+
+  def update
+    @cocktail = Cocktail.find(params[:id])
+    @cocktail.update(cocktail_params)
+    redirect_to cocktail_path(@cocktail)
+  end
+
   private
 
   def cocktail_params
-    params.require(:cocktail).permit(
-      :name, :photo,
-      doses_attributes: %i[description ingredient_id]
-    )
+    params.require(:cocktail).permit(:name, :photo)
   end
 end

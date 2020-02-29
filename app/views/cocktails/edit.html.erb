@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-sm-12 w-50">
+      <%= simple_form_for @cocktail do |f| %>
+        <%= f.input :name %>
+        <%= f.input :photo, as: :file %>
+
+        <%= f.submit 'Edit Cocktail', class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

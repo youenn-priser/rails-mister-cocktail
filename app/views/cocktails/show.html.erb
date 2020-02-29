@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-sm-6">
         <%= @cocktail.photo.attached? ? (cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill, class: "rounded") : (image_tag 'default-cocktail.png', class: 'rounded img-fluid w-75') %>
+        <%= link_to 'Edit Cocktail', edit_cocktail_path(@cocktail), class: 'btn btn-success center mt-2' %>
       </div>
       <div class="col-sm-6 d-flex flex-column justify-content-center">
         <h3 class="text-center">Recipe</h3>
